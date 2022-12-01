@@ -29,7 +29,7 @@ const Predict: NextPage<Props> = (props) => {
   const { matchId } = props;
   const teamA = 0;
   const teamB = 1;
-  const status = 2;
+  const status = 1;
 
   const { contract: mainContract } = useContract({
     address: MAIN_ADDRESS,
@@ -54,6 +54,7 @@ const Predict: NextPage<Props> = (props) => {
     // console.log(matchData[0]);
     const { a, b, poolAmount, status, t_teamA, t_teamB, winner } = matchData[0];
     console.log({
+      matchId,
       a: a,
       b: b,
       poolAmount: uint256ToBN(poolAmount).toNumber(),

@@ -70,7 +70,7 @@ const Home: NextPage = () => {
               {MATCH_LIST.map((match, idx) => {
                 return (
                   <div key={idx}>
-                    <Predict match={match} />
+                    <Predict matchId={match} />
                   </div>
                 );
               })}
