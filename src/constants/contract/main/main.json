@@ -1,0 +1,265 @@
+[
+    {
+        "name": "Uint256",
+        "size": 2,
+        "type": "struct",
+        "members": [
+            {
+                "name": "low",
+                "type": "felt",
+                "offset": 0
+            },
+            {
+                "name": "high",
+                "type": "felt",
+                "offset": 1
+            }
+        ]
+    },
+    {
+        "name": "MatchInfo",
+        "size": 8,
+        "type": "struct",
+        "members": [
+            {
+                "name": "a",
+                "type": "felt",
+                "offset": 0
+            },
+            {
+                "name": "b",
+                "type": "felt",
+                "offset": 1
+            },
+            {
+                "name": "t_teamA",
+                "type": "felt",
+                "offset": 2
+            },
+            {
+                "name": "t_teamB",
+                "type": "felt",
+                "offset": 3
+            },
+            {
+                "name": "winner",
+                "type": "felt",
+                "offset": 4
+            },
+            {
+                "name": "poolAmount",
+                "type": "Uint256",
+                "offset": 5
+            },
+            {
+                "name": "status",
+                "type": "felt",
+                "offset": 7
+            }
+        ]
+    },
+    {
+        "name": "get_balance_pool",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "r",
+                "type": "Uint256"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "name": "get_fee",
+        "type": "function",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "r",
+                "type": "Uint256"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "name": "get_match",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "res",
+                "type": "MatchInfo"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "name": "winner_of_match",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "res",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "name": "get_match_status",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "res",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "name": "get_owner",
+        "type": "function",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "caller_address",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "name": "get_userPick",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "team",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "name": "predictoor",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            },
+            {
+                "name": "amount",
+                "type": "Uint256"
+            },
+            {
+                "name": "team",
+                "type": "felt"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "name": "createMatch",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            },
+            {
+                "name": "teamA",
+                "type": "felt"
+            },
+            {
+                "name": "teamB",
+                "type": "felt"
+            },
+            {
+                "name": "_status",
+                "type": "felt"
+            },
+            {
+                "name": "_poolAmount",
+                "type": "Uint256"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "name": "setWinner",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            },
+            {
+                "name": "team",
+                "type": "felt"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "name": "claimFunds",
+        "type": "function",
+        "inputs": [
+            {
+                "name": "id",
+                "type": "felt"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "name": "constructor",
+        "type": "constructor",
+        "inputs": [
+            {
+                "name": "token_address",
+                "type": "felt"
+            },
+            {
+                "name": "fee",
+                "type": "Uint256"
+            },
+            {
+                "name": "inBal",
+                "type": "Uint256"
+            },
+            {
+                "name": "_owner",
+                "type": "felt"
+            }
+        ],
+        "outputs": []
+    }
+]
