@@ -1,4 +1,4 @@
-export const MATCH_LIST = [4];
+export const MATCH_LIST = [567];
 
 type tTEam = {
   [key: number]: string;
@@ -7,7 +7,7 @@ type tTEam = {
 export const TEAM: tTEam = {
   0: "ARGENTINA",
   1: "BRAZIL",
-  2: "COLOMBIA",
+  2: "PORTUGAL",
 };
 
 type tSTATUS = {

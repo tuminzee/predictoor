@@ -14,7 +14,7 @@ import {
   MAIN_ABI,
 } from "../../constants";
 import { Abi } from "starknet";
-import { toBN } from "starknet/utils/number";
+import { toBN, toFelt } from "starknet/utils/number";
 import { bnToUint256, uint256ToBN } from "starknet/dist/utils/uint256";
 
 interface Props {
@@ -27,8 +27,10 @@ const Predict: NextPage<Props> = (props) => {
   const [isDisabled, setIsDisabled] = useState(false);
   // const { teamA, teamB } = props;
   const { matchId } = props;
-  const teamA = 0;
-  const teamB = 1;
+
+  const teamA = 1;
+  const teamB = 2;
+
   const status = 1;
 
   const { contract: mainContract } = useContract({
@@ -44,7 +46,7 @@ const Predict: NextPage<Props> = (props) => {
   } = useStarknetCall({
     contract: mainContract,
     method: "get_match",
-    args: [toBN(matchId)],
+    args: [toFelt(toBN(matchId))],
     options: {
       watch: true,
     },
@@ -55,8 +57,8 @@ const Predict: NextPage<Props> = (props) => {
     const { a, b, poolAmount, status, t_teamA, t_teamB, winner } = matchData[0];
     console.log({
       matchId,
-      a: a,
-      b: b,
+      a: a.toNumber(),
+      b: b.toNumber(),
       poolAmount: uint256ToBN(poolAmount).toNumber(),
       status: status.toNumber(),
       t_teamA: t_teamA.toNumber(),
@@ -70,12 +72,12 @@ const Predict: NextPage<Props> = (props) => {
       {
         contractAddress: ETH_ADDRESS,
         entrypoint: "approve",
-        calldata: [PREDICT_ADDRESS, "100000", "0"],
+        calldata: [MAIN_ADDRESS, "10000000000", 0],
       },
       {
-        contractAddress: PREDICT_ADDRESS,
-        entrypoint: "deposit_eth",
-        calldata: [1, 0],
+        contractAddress: MAIN_ADDRESS,
+        entrypoint: "predictoor",
+        calldata: [toFelt(matchId), "10000000000", "0", "1"],
       },
     ],
   });
@@ -92,11 +94,6 @@ const Predict: NextPage<Props> = (props) => {
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
-      // setTimeout(() => {
-      //   setIsLoading(false);
-      //   console.log("submit");
-      // }, 2000);
-
       const tx = await execute();
       if (tx) {
         setIsLoading(false);

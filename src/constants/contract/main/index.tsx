@@ -1,5 +1,5 @@
 import MAIN_ABI from "./main.json";
 const MAIN_ADDRESS =
-  "0x009b96d25ec206856a60ab99496c17c714e0138a4f2cdb9b5a492a0e2f2ba219";
+  "0x00c9f4d31c9203e639e86fd090bc80139882947ba372e13b5f46afe43f518efc";
 
 export { MAIN_ABI, MAIN_ADDRESS };
